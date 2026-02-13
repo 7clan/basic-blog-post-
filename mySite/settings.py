@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-&1g1gfw4+qgyryttj!u*6cuaz(pp^4e4^)ep4us*9%e9^$i65s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True #turn it back to true when you done with 404.html test so you can see the messages error when stuff happen
 
-ALLOWED_HOSTS = [] #make it empty when you done with 404.html
+ALLOWED_HOSTS = ['*']  # allow any host
+ #make it empty when you done with 404.html
 
 
 # Application definition
