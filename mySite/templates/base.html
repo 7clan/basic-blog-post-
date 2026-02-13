@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Modern Blog{% endblock %}</title>
+    
+    {% block css_files %}
+        <link rel="stylesheet" href="{% static 'app.css' %}">
+    {% endblock %}
+</head>
+<body>
+   <header id="main-navigation">
+    <div class="nav-container">
+        <h1 class="logo"><a href="/">MY BLOG</a></h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'all_tags' %}">All Tags</a></li>
+                <li><a href="{% url 'read_later_list' %}">Read Later</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to My Blog</h1>
+            
+        </div>
+    </section>
+
+    <main class="container">
+        {% block content %} 
+            <div class="logo-wrapper">
+                <img src="{% static 'blog/images/test.png' %}" alt="Logo">
+            </div>
+        {% endblock %}
+    </main>
+</body>
+</html>

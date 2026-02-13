@@ -1,0 +1,76 @@
+/* --- Base Styling --- */
+body {
+    background-color: #f8fafc; /* Clean, modern off-white */
+    color: #1e293b;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* --- About Me Section --- */
+.about {
+    padding: 10rem 10% 5rem; /* Large top padding to clear the fixed nav */
+    text-align: center;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.about h2 {
+    font-size: 3rem;
+    color: #390281;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.about p {
+    font-size: 1.25rem;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Post List Container --- */
+/* We wrap the loop in a container for better spacing */
+section.content-wrapper {
+    max-width: 800px;
+    margin: 0 auto 10rem;
+    padding: 0 5%;
+}
+
+/* --- The Post Links --- */
+/* Target the <a> tags directly from your loop */
+a[href*="/"] { 
+    display: block;
+    text-decoration: none;
+    color: #1e293b;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    background: #ffffff;
+    border-radius: 16px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: 1px solid #e2e8f0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+a[href*="/"]:hover {
+    transform: scale(1.02);
+    border-color: #cf79f1;
+    color: #390281;
+    box-shadow: 0 20px 25px -5px rgba(207, 121, 241, 0.1), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* --- Adding a "Post" Counter Effect --- */
+section.content-wrapper {
+    counter-reset: post-counter;
+}
+
+a[href*="/"]::before {
+    counter-increment: post-counter;
+    content: counter(post-counter, decimal-leading-zero);
+    font-size: 0.85rem;
+    color: #cf79f1;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: monospace;
+}

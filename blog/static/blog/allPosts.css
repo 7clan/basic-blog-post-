@@ -1,0 +1,100 @@
+/* --- Global Styles --- */
+body {
+  background-color: #f4f7f6; /* Softer light grey */
+  margin: 0;
+  color: #333;
+}
+
+/* --- All Posts Section --- */
+#all-posts {
+  margin: 8rem auto;
+  width: 90%;
+  max-width: 70rem; /* Increased for a better 3-column feel */
+}
+
+#all-posts h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-family: 'Lato', sans-serif;
+  color: #1a1a1a;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+/* Subtle accent line under the heading */
+#all-posts h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 4px;
+  background: #390281;
+  margin: 10px auto;
+  border-radius: 2px;
+}
+
+/* --- The Grid --- */
+#all-posts ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: 2.5rem; /* More breathing room */
+}
+
+/* --- The Post Card --- */
+.post {
+  display: flex;
+}
+
+.post a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden; /* Clips image to border radius */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+/* --- Image Handling --- */
+.post img {
+  width: 100%;
+  height: 12rem; /* Consistent height for all thumbnails */
+  object-fit: cover; /* Prevents stretching, crops to fill */
+  transition: transform 0.5s ease;
+}
+
+/* --- Card Content --- */
+.post-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.post-content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  color: #390281;
+}
+
+.post-content p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Interactive States --- */
+.post a:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(57, 2, 129, 0.15);
+}
+
+.post a:hover img {
+  transform: scale(1.05); /* Slight zoom on image */
+}

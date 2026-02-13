@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Read Later Posts</h2>
+<ul>
+  {% for post in posts %}
+    <li><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></li>
+  {% empty %}
+    <li>No posts saved for later.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
