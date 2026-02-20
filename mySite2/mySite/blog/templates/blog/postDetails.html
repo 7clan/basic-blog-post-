@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ post.title }}
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'blog/postDetails.css' %}">
+{% endblock %}
+
+{% block content %}
+<article class="post-layout">
+    <section class="post-content card-surface">
+        <h1>{{ post.title }}</h1>
+        <div class="meta">
+            <span>{{ post.created_at|date:"M d, Y" }}</span>
+            {% if post.author %}
+                <span>By {{ post.author.name }}</span>
+            {% endif %}
+        </div>
+
+        {% if post.img %}
+            <img src="{{ post.img.url }}" alt="{{ post.title }}">
+        {% endif %}
+
+        <p class="copy">{{ post.content }}</p>
+
+        <form method="POST" action="{% url 'read_later' post.slug %}">
+            {% csrf_token %}
+            <input type="hidden" name="post_id" value="{{ post.id }}">
+            <button type="submit" class="read-later">Save For Later</button>
+        </form>
+    </section>
+
+    <aside class="post-side">
+        <section class="card-surface form-card">
+            <h2>Leave a Comment</h2>
+            <form method="POST" action="{% url 'post_comment' post.slug %}" class="comment-form">
+                {% csrf_token %}
+                <input type="text" name="author" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="content" rows="5" placeholder="Add a comment..." required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <section class="card-surface comments">
+            <h2>Comments</h2>
+            {% for comment in comments %}
+                <article class="comment">
+                    <p><strong>{{ comment.author }}</strong> <span>{{ comment.created_at|date:"M d, Y H:i" }}</span></p>
+                    <p>{{ comment.content }}</p>
+                </article>
+            {% empty %}
+                <p class="empty">No comments yet. Be the first to write one.</p>
+            {% endfor %}
+        </section>
+    </aside>
+</article>
+{% endblock %}

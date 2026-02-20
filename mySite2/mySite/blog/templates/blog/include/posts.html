@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}All Posts - MY BLOG{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'blog/postDetails.css' %}">
+{% endblock %}
+
+{% block content %}
+<ul>
+  <li>(title : {{ post.title }}) </li>
+  <li>Image: <img src="{{ post.img.url }}" alt="{{ post.title }}"></li>
+  <li>created_at: {{ post.created_at }}</li>
+  <li>Slug: {{ post.slug }}</li>
+  <li>Content: {{ post.content }}</li>
+  <li>Author: {{ post.author.name }}</li>
+  <li>Author Email: {{ post.author.email }}</li>
+  
+</ul>
+{% endblock %}
+
+

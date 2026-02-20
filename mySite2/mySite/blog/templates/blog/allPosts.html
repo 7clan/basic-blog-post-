@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+All Tags | MY BLOG
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'blog/allPosts.css' %}">
+{% endblock %}
+
+{% block content %}
+<section id="all-posts" class="card-surface">
+    <h1>Explore Tags</h1>
+    <p>Jump into topics you care about most.</p>
+    <ul class="tag-list">
+        {% for tag in all_tags %}
+            <li><a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a></li>
+        {% empty %}
+            <li class="empty">No tags created yet.</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

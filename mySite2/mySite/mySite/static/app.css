@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');
+
+:root {
+  --ink: #102a43;
+  --text: #243b53;
+  --muted: #627d98;
+  --paper: rgba(242, 248, 255, 0.76);
+  --mist: #f0f4f8;
+  --accent: #ff6b35;
+  --accent-2: #0ea5e9;
+  --radius: 18px;
+  --shadow: 0 18px 45px rgba(16, 42, 67, 0.14);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(1000px 420px at -10% -10%, rgba(14, 165, 233, 0.22), transparent 55%),
+    radial-gradient(900px 500px at 110% 5%, rgba(255, 107, 53, 0.2), transparent 58%),
+    radial-gradient(700px 300px at 50% 100%, rgba(16, 185, 129, 0.12), transparent 62%),
+    linear-gradient(180deg, #f9fcff 0%, #edf3fa 100%);
+  background-attachment: fixed;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+body::before {
+  background:
+    repeating-linear-gradient(
+      120deg,
+      rgba(16, 42, 67, 0.035) 0,
+      rgba(16, 42, 67, 0.035) 1px,
+      transparent 1px,
+      transparent 16px
+    );
+  opacity: 0.35;
+}
+
+body::after {
+  background:
+    radial-gradient(circle at 20% 70%, rgba(14, 165, 233, 0.18), transparent 28%),
+    radial-gradient(circle at 78% 28%, rgba(255, 107, 53, 0.16), transparent 30%);
+  filter: blur(38px);
+  animation: drift 16s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(-1%, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(1%, -1%, 0) scale(1.03);
+  }
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Fraunces", serif;
+}
+
+a {
+  color: inherit;
+}
+
+#main-navigation {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem max(1.25rem, 4vw);
+  border-bottom: 1px solid rgba(16, 42, 67, 0.08);
+  background: rgba(235, 244, 255, 0.74);
+  backdrop-filter: blur(14px);
+}
+
+.brand {
+  color: var(--ink);
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+#main-navigation ul {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#main-navigation a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+#main-navigation li a {
+  padding: 0.5rem 0.95rem;
+  border-radius: 999px;
+  color: var(--ink);
+  font-weight: 500;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+#main-navigation li a:hover,
+#main-navigation li a:focus-visible {
+  transform: translateY(-1px);
+  background-color: rgba(14, 165, 233, 0.12);
+}
+
+.page-shell {
+  width: min(1100px, 92vw);
+  margin: 2rem auto 3rem;
+}
+
+.card-surface {
+  background: var(--paper);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(206, 225, 247, 0.70);
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 760px) {
+  #main-navigation {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  #main-navigation ul {
+    flex-wrap: wrap;
+  }
+}
+
+

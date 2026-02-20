@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+MY BLOG
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'blog/index.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section id="welcome" class="card-surface">
+        <div class="welcome-copy">
+            <p class="kicker">Fresh Ideas Weekly</p>
+            <h1>Stories, tutorials, and notes from my Django build journey.</h1>
+            <p class="lead">Short, practical posts on coding, debugging, and improving projects one feature at a time.</p>
+        </div>
+        <img src="{% static 'blog/images/test.png' %}" alt="Profile image">
+    </section>
+
+    <section id="latest-posts">
+        <div class="section-heading">
+            <h2>Latest Posts</h2>
+            <a href="{% url 'all_tags' %}" class="pill-link">Browse by tag</a>
+        </div>
+        <ul class="post-grid">
+            {% for post in posts %}
+                <li class="post-card card-surface">
+                    <a href="{{ post.get_absolute_url }}">
+                        {% if post.img %}
+                            <img src="{{ post.img.url }}" alt="{{ post.title }}">
+                        {% else %}
+                            <img src="{% static 'blog/images/another-post.png' %}" alt="{{ post.title }}">
+                        {% endif %}
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.content|truncatewords:20 }}</p>
+                    </a>
+                </li>
+            {% empty %}
+                <li class="empty card-surface">No posts yet.</li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'app.css' %}">
+    {% block css_files %}{% endblock %}
+</head>
+<body>
+    <header id="main-navigation">
+        <a class="brand" href="{% url 'posts' %}">Neon Journal</a>
+        <nav>
+            <ul>
+                <li><a href="{% url 'posts' %}">Home</a></li>
+                <li><a href="{% url 'all_tags' %}">All Tags</a></li>
+                <li><a href="{% url 'read_later_list' %}">Read Later</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-shell">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
