@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: basic-blog-post
+    env: python
+    rootDir: mySite2/mySite
+    buildCommand: pip install -r ../../requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
+    startCommand: gunicorn mySite.wsgi:application
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
